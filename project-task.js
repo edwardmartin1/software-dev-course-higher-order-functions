@@ -44,18 +44,22 @@ Step-by-Step:
 3. Return the filtered result.
 */
 
-/* final answer */
-function filterProducts(inputArray, callbackFunction) 
-{
+function filterProducts(inputArray, callbackFunction) {
   return inputArray.filter(callbackFunction);
 }
-/*
-console.log("inStock: true", filterProducts(products, (objectName) => objectName.inStock === true));
+
+console.log("Filtered products:", 
+            "inStock: true", 
+            filterProducts(products, (objectName) => objectName.inStock === true));
 console.log();
-console.log("inStock: false", filterProducts(products, (objectName) => objectName.inStock === false));
+console.log("Filtered products:", 
+            "inStock: false", 
+            filterProducts(products, (objectName) => objectName.inStock === false));
 console.log();
-console.log("price >= 800", filterProducts(products, (objectName) => objectName.price >= 800));
-*/
+console.log("Filtered products:", 
+            "price >= 800", 
+            filterProducts(products, (objectName) => objectName.price >= 800));
+console.log();
 
 
 /*
@@ -69,12 +73,10 @@ Step-by-Step:
 3. Store the result in a new variable.
 */
 
-/* final answer
 let nameArray = products.map((objectName) => objectName.name.toUpperCase());
 
+console.log("Uppercased names:", nameArray);
 console.log();
-console.log("uppercase names: ", nameArray);
-*/
 
 
 /*
@@ -90,27 +92,20 @@ Step-by-Step:
 3. Use this returned function inside a `map()` call to apply discounts to all products.
 */
 
-/* final answer
-function applyDiscount (discountPercent)
-{
-  return function (objectName)
-  {
+function applyDiscount (discountPercent) {
+  return function (objectName) {
     return objectName.price * (discountPercent / 100)    
   }  
 }
 
 const discount50 = applyDiscount(50);
 
-console.log(products.map((objectName) => 
-  {
-    return { ...objectName, price: discount50(objectName)};        
+console.log("Discounted products:", 
+  products.map((objectName) => {
+    return {...objectName, price: discount50(objectName)};        
   }));    
-*/
 
-//for (let objectName of products)
-//{
-//  console.log(discount50(objectName));
-//}
+console.log();
 
 
 /*
@@ -124,28 +119,21 @@ Step-by-Step:
 3. Store the total in a new variable.
 */
 
-/*
-let totalPricesInStock = products.reduce((total, objectName) => total + objectName.price, 0);
-console.log(totalPricesInStock);
-*/
-
-
-// total for both in stock and out of stock
-//let totalPricesInStock = products.reduce((total, objectName) => total + objectName.price, 0);
-
 let inStockArray = filterProducts(products, (objectName) => objectName.inStock === true);
 let totalPricesInStock = inStockArray.reduce((total, objectName) => total + objectName.price, 0);
 
+// this code works but is a little difficult to read so I used 2 statements instead of 1
 //let totalPricesInStock = filterProducts(products, (objectName) => objectName.inStock === true)
 //                         .reduce((total, objectName) => total + objectName.price, 0);
 
-console.log(totalPricesInStock);
+console.log("Total value in stock:", totalPricesInStock);
 
 
 // ============================================
 // 🧪 Console Test Your Work
 // ============================================
 
+// see tests and logs above
 // console.log("Filtered products:", ...);
 // console.log("Uppercased names:", ...);
 // console.log("Discounted products:", ...);
