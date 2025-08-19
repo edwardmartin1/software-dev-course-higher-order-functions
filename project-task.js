@@ -94,15 +94,15 @@ Step-by-Step:
 
 function applyDiscount (discountPercent) {
   return function (objectName) {
-    return objectName.price * (discountPercent / 100)    
+    return objectName.price * (1 - (discountPercent / 100))    
   }  
 }
 
-const discount50 = applyDiscount(50);
+const discount10 = applyDiscount(10);
 
 console.log("Discounted products:", 
   products.map((objectName) => {
-    return {...objectName, price: discount50(objectName)};        
+    return {...objectName, price: discount10(objectName)};        
   }));    
 
 console.log();
